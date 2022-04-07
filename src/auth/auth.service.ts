@@ -34,10 +34,8 @@ export class AuthService {
             throw new Error(`Password not equal`);
         }
 
-        const accessToken = await this.jwtService.sign(
-            { username },
-            { secret: "jwt-token", expiresIn: "1h" },
-        );
+        const payload = { username };
+        const accessToken = await this.jwtService.sign(payload);
 
         return { accessToken };
     }
