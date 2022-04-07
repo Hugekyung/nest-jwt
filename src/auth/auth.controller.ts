@@ -1,6 +1,8 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
 import { AuthService } from "./auth.service";
 import { CreateAuthDto } from "./dto/createAuthDto";
+import { User } from "./user.entity";
 
 @Controller("auth")
 export class AuthController {
@@ -16,5 +18,12 @@ export class AuthController {
         @Body() createAuthDto: CreateAuthDto,
     ): Promise<{ accessToken: string }> {
         return this.authService.userLogin(createAuthDto);
+    }
+
+    @Get("/confirm")
+    @UseGuards(AuthGuard())
+    confirm(@Req() req): {} {
+        const username = req.user.username;
+        return { status: 200, message: `${username} is confirmed.` };
     }
 }
