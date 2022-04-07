@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from "typeorm";
 import { CreateAuthDto } from "./dto/createAuthDto";
-import { User } from "./userEntity";
+import { User } from "./user.entity";
 import * as bcrypt from "bcryptjs";
 import {
     ConflictException,
