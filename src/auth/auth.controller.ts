@@ -2,7 +2,6 @@ import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { AuthService } from "./auth.service";
 import { CreateAuthDto } from "./dto/createAuthDto";
-import { User } from "./user.entity";
 
 @Controller("auth")
 export class AuthController {
